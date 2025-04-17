@@ -147,7 +147,7 @@ function debouncedRunloop(fn) {
 
     preview.textContent = code;
     preview.removeAttribute('data-processed');
-    mermaid.init(); // render
+    mermaid.run(); // render
   }
 
   // init
