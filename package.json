@@ -2,7 +2,7 @@
     "name": "vscode-mermaid-editor",
     "displayName": "Mermaid Editor",
     "description": "Live editor for mermaid.js in Visual Studio Code",
-    "version": "0.25.4",
+    "version": "0.25.0",
     "publisher": "FFengIll",
     "license": "MIT",
     "engines": {
@@ -23,10 +23,10 @@
     "icon": "images/logo.png",
     "repository": {
         "type": "git",
-        "url": "https://github.com/tomoyukim/vscode-mermaid-editor.git"
+        "url": "https://github.com/FFengIll/vscode-mermaid-editor.git"
     },
-    "homepage": "https://github.com/tomoyukim/vscode-mermaid-editor",
-    "bugs": "https://github.com/tomoyukim/vscode-mermaid-editor/issues",
+    "homepage": "https://github.com/FFengIll/vscode-mermaid-editor",
+    "bugs": "https://github.com/FFengIll/vscode-mermaid-editor/issues",
     "activationEvents": [
         "onWebviewPanel:mermaid-editor-preview",
         "onLanguage:mermaid"
