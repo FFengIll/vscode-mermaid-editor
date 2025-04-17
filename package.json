@@ -1,309 +1,332 @@
 {
-  "name": "vscode-mermaid-editor",
-  "displayName": "Mermaid Editor",
-  "description": "Live editor for mermaid.js in Visual Studio Code",
-  "version": "0.19.1",
-  "publisher": "tomoyukim",
-  "license": "MIT",
-  "engines": {
-    "vscode": "^1.75.0"
-  },
-  "categories": ["Other"],
-  "keywords": ["mermaid", "uml", "diagram"],
-  "galleryBanner": {
-    "color": "#333333",
-    "theme": "dark"
-  },
-  "icon": "images/logo.png",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tomoyukim/vscode-mermaid-editor.git"
-  },
-  "homepage": "https://github.com/tomoyukim/vscode-mermaid-editor",
-  "bugs": "https://github.com/tomoyukim/vscode-mermaid-editor/issues",
-  "activationEvents": [
-    "onWebviewPanel:mermaid-editor-preview",
-    "onLanguage:mermaid"
-  ],
-  "main": "./dist/extension",
-  "contributes": {
-    "languages": [
-      {
-        "id": "mermaid",
-        "extensions": [".mmd", ".mermaid"],
-        "aliases": ["Mermaid", "mermaid"]
-      }
+    "name": "vscode-mermaid-editor",
+    "displayName": "Mermaid Editor",
+    "description": "Live editor for mermaid.js in Visual Studio Code",
+    "version": "0.19.1",
+    "publisher": "tomoyukim",
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.75.0"
+    },
+    "categories": [
+        "Other"
     ],
-    "configuration": [
-      {
-        "type": "object",
-        "title": "mermaid-editor configuration",
-        "properties": {
-          "mermaid-editor.preview.defaultMermaidConfig": {
-            "type": ["string", "null"],
-            "default": null,
-            "description": "Relative or absolute path to the default configuration json file for mermaid.js"
-          },
-          "mermaid-editor.preview.backgroundColor": {
-            "type": "string",
-            "default": "white",
-            "description": "default background color for live preview and generated image."
-          },
-          "mermaid-editor.preview.errorOutputOnSave": {
-            "type": "boolean",
-            "default": true,
-            "description": "show output console when saving file if there's error log."
-          },
-          "mermaid-editor.generate.type": {
-            "type": "string",
-            "default": "svg",
-            "enum": ["svg", "png", "jpg", "webp"],
-            "description": "output file type [svg, png, jpg, webp]"
-          },
-          "mermaid-editor.generate.outputPath": {
-            "type": ["string", "null"],
-            "default": null,
-            "description": "relative path to the output target directory from project root"
-          },
-          "mermaid-editor.generate.useCurrentPath": {
-            "type": "boolean",
-            "default": true,
-            "description": "use relative output path as same as target mmd file instead of 'outputPath'"
-          },
-          "mermaid-editor.generate.scale": {
-            "type": "number",
-            "default": "1.0",
-            "description": "scale of the output image."
-          },
-          "mermaid-editor.generate.quality": {
-            "type": "number",
-            "default": "1.0",
-            "description": "quality of the output image."
-          }
-        }
-      }
+    "keywords": [
+        "mermaid",
+        "uml",
+        "diagram"
     ],
-    "commands": [
-      {
-        "command": "mermaid-editor.generate.clipboard",
-        "title": "Mermaid:Copy image",
-        "icon": {
-          "light": "./images/light/icon-copy.svg",
-          "dark": "./images/dark/icon-copy.svg"
-        }
-      },
-      {
-        "command": "mermaid-editor.generate.file",
-        "title": "Mermaid:Generate image",
-        "icon": {
-          "light": "./images/light/icon-dl.svg",
-          "dark": "./images/dark/icon-dl.svg"
-        }
-      },
-      {
-        "command": "mermaid-editor.preview",
-        "title": "Mermaid:Preview diagram",
-        "icon": {
-          "light": "./images/light/icon-eye.svg",
-          "dark": "./images/dark/icon-eye.svg"
-        }
-      },
-      {
-        "command": "mermaid-editor.preview.zoomin",
-        "title": "Mermaid:Zoom in",
-        "icon": {
-          "light": "./images/light/icon-zoom-in.svg",
-          "dark": "./images/dark/icon-zoom-in.svg"
-        }
-      },
-      {
-        "command": "mermaid-editor.preview.zoomout",
-        "title": "Mermaid:Zoom out",
-        "icon": {
-          "light": "./images/light/icon-zoom-out.svg",
-          "dark": "./images/dark/icon-zoom-out.svg"
-        }
-      },
-      {
-        "command": "mermaid-editor.preview.zoomreset",
-        "title": "Mermaid:Reset zoom"
-      },
-      {
-        "command": "mermaid-editor.preview.zoomto",
-        "title": "Mermaid:Zoom to specific scale"
-      },
-      {
-        "command": "mermaid-editor.library.update",
-        "title": "Mermaid:Update mermaid library to the latest"
-      },
-      {
-        "command": "mermaid-editor.library.set",
-        "title": "Mermaid:Set an URL to hosted mermaid library on CDN"
-      },
-      {
-        "command": "mermaid-editor.library.reset",
-        "title": "Mermaid:Reset mermaid library to the default"
-      },
-      {
-        "command": "mermaid-editor.library.show",
-        "title": "Mermaid:Show current mermaid library setting"
-      }
+    "galleryBanner": {
+        "color": "#333333",
+        "theme": "dark"
+    },
+    "icon": "images/logo.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tomoyukim/vscode-mermaid-editor.git"
+    },
+    "homepage": "https://github.com/tomoyukim/vscode-mermaid-editor",
+    "bugs": "https://github.com/tomoyukim/vscode-mermaid-editor/issues",
+    "activationEvents": [
+        "onWebviewPanel:mermaid-editor-preview",
+        "onLanguage:mermaid"
     ],
-    "keybindings": [
-      {
-        "command": "mermaid-editor.generate.clipboard",
-        "key": "ctrl+alt+;",
-        "when": "mermaidPreviewActive"
-      },
-      {
-        "command": "mermaid-editor.generate.file",
-        "key": "ctrl+alt+]",
-        "when": "mermaidPreviewEnabled && (resourceExtname == .mmd || resourceExtname ==.mermaid)"
-      },
-      {
-        "command": "mermaid-editor.preview",
-        "key": "ctrl+alt+[",
-        "when": "resourceExtname == .mmd || resourceExtname ==.mermaid"
-      },
-      {
-        "command": "mermaid-editor.preview.zoomin",
-        "key": "ctrl+alt+=",
-        "when": "mermaidPreviewVisible"
-      },
-      {
-        "command": "mermaid-editor.preview.zoomout",
-        "key": "ctrl+alt+-",
-        "when": "mermaidPreviewVisible"
-      },
-      {
-        "command": "mermaid-editor.preview.zoomreset",
-        "key": "ctrl+alt+0",
-        "when": "mermaidPreviewVisible"
-      }
-    ],
-    "menus": {
-      "editor/context": [
-        {
-          "when": "mermaidPreviewEnabled && (resourceExtname == .mmd || resourceExtname ==.mermaid)",
-          "command": "mermaid-editor.generate.file",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceExtname == .mmd || resourceExtname ==.mermaid",
-          "command": "mermaid-editor.preview",
-          "group": "navigation"
+    "main": "./dist/extension",
+    "contributes": {
+        "languages": [
+            {
+                "id": "mermaid",
+                "extensions": [
+                    ".mmd",
+                    ".mermaid"
+                ],
+                "aliases": [
+                    "Mermaid",
+                    "mermaid"
+                ]
+            }
+        ],
+        "configuration": [
+            {
+                "type": "object",
+                "title": "mermaid-editor configuration",
+                "properties": {
+                    "mermaid-editor.preview.defaultMermaidConfig": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "default": null,
+                        "description": "Relative or absolute path to the default configuration json file for mermaid.js"
+                    },
+                    "mermaid-editor.preview.backgroundColor": {
+                        "type": "string",
+                        "default": "white",
+                        "description": "default background color for live preview and generated image."
+                    },
+                    "mermaid-editor.preview.errorOutputOnSave": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "show output console when saving file if there's error log."
+                    },
+                    "mermaid-editor.generate.type": {
+                        "type": "string",
+                        "default": "svg",
+                        "enum": [
+                            "svg",
+                            "png",
+                            "jpg",
+                            "webp"
+                        ],
+                        "description": "output file type [svg, png, jpg, webp]"
+                    },
+                    "mermaid-editor.generate.outputPath": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "default": null,
+                        "description": "relative path to the output target directory from project root"
+                    },
+                    "mermaid-editor.generate.useCurrentPath": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "use relative output path as same as target mmd file instead of 'outputPath'"
+                    },
+                    "mermaid-editor.generate.scale": {
+                        "type": "number",
+                        "default": "1.0",
+                        "description": "scale of the output image."
+                    },
+                    "mermaid-editor.generate.quality": {
+                        "type": "number",
+                        "default": "1.0",
+                        "description": "quality of the output image."
+                    }
+                }
+            }
+        ],
+        "commands": [
+            {
+                "command": "mermaid-editor.generate.clipboard",
+                "title": "Mermaid:Copy image",
+                "icon": {
+                    "light": "./images/light/icon-copy.svg",
+                    "dark": "./images/dark/icon-copy.svg"
+                }
+            },
+            {
+                "command": "mermaid-editor.generate.file",
+                "title": "Mermaid:Generate image",
+                "icon": {
+                    "light": "./images/light/icon-dl.svg",
+                    "dark": "./images/dark/icon-dl.svg"
+                }
+            },
+            {
+                "command": "mermaid-editor.preview",
+                "title": "Mermaid:Preview diagram",
+                "icon": {
+                    "light": "./images/light/icon-eye.svg",
+                    "dark": "./images/dark/icon-eye.svg"
+                }
+            },
+            {
+                "command": "mermaid-editor.preview.zoomin",
+                "title": "Mermaid:Zoom in",
+                "icon": {
+                    "light": "./images/light/icon-zoom-in.svg",
+                    "dark": "./images/dark/icon-zoom-in.svg"
+                }
+            },
+            {
+                "command": "mermaid-editor.preview.zoomout",
+                "title": "Mermaid:Zoom out",
+                "icon": {
+                    "light": "./images/light/icon-zoom-out.svg",
+                    "dark": "./images/dark/icon-zoom-out.svg"
+                }
+            },
+            {
+                "command": "mermaid-editor.preview.zoomreset",
+                "title": "Mermaid:Reset zoom"
+            },
+            {
+                "command": "mermaid-editor.preview.zoomto",
+                "title": "Mermaid:Zoom to specific scale"
+            },
+            {
+                "command": "mermaid-editor.library.update",
+                "title": "Mermaid:Update mermaid library to the latest"
+            },
+            {
+                "command": "mermaid-editor.library.set",
+                "title": "Mermaid:Set an URL to hosted mermaid library on CDN"
+            },
+            {
+                "command": "mermaid-editor.library.reset",
+                "title": "Mermaid:Reset mermaid library to the default"
+            },
+            {
+                "command": "mermaid-editor.library.show",
+                "title": "Mermaid:Show current mermaid library setting"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "mermaid-editor.generate.clipboard",
+                "key": "ctrl+alt+;",
+                "when": "mermaidPreviewActive"
+            },
+            {
+                "command": "mermaid-editor.generate.file",
+                "key": "ctrl+alt+]",
+                "when": "mermaidPreviewEnabled && (resourceExtname == .mmd || resourceExtname ==.mermaid)"
+            },
+            {
+                "command": "mermaid-editor.preview",
+                "key": "ctrl+alt+[",
+                "when": "resourceExtname == .mmd || resourceExtname ==.mermaid"
+            },
+            {
+                "command": "mermaid-editor.preview.zoomin",
+                "key": "ctrl+alt+=",
+                "when": "mermaidPreviewVisible"
+            },
+            {
+                "command": "mermaid-editor.preview.zoomout",
+                "key": "ctrl+alt+-",
+                "when": "mermaidPreviewVisible"
+            },
+            {
+                "command": "mermaid-editor.preview.zoomreset",
+                "key": "ctrl+alt+0",
+                "when": "mermaidPreviewVisible"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "when": "mermaidPreviewEnabled && (resourceExtname == .mmd || resourceExtname ==.mermaid)",
+                    "command": "mermaid-editor.generate.file",
+                    "group": "navigation"
+                },
+                {
+                    "when": "resourceExtname == .mmd || resourceExtname ==.mermaid",
+                    "command": "mermaid-editor.preview",
+                    "group": "navigation"
+                }
+            ],
+            "editor/title": [
+                {
+                    "when": "mermaidPreviewEnabled && (resourceExtname == .mmd || resourceExtname ==.mermaid)",
+                    "command": "mermaid-editor.generate.file",
+                    "group": "navigation"
+                },
+                {
+                    "when": "resourceExtname == .mmd || resourceExtname ==.mermaid",
+                    "command": "mermaid-editor.preview",
+                    "group": "navigation"
+                },
+                {
+                    "when": "mermaidPreviewActive",
+                    "command": "mermaid-editor.preview.zoomin",
+                    "group": "navigation"
+                },
+                {
+                    "when": "mermaidPreviewActive",
+                    "command": "mermaid-editor.preview.zoomout",
+                    "group": "navigation"
+                },
+                {
+                    "when": "mermaidPreviewActive",
+                    "command": "mermaid-editor.generate.clipboard",
+                    "group": "navigation"
+                }
+            ],
+            "commandPalette": [
+                {
+                    "command": "mermaid-editor.generate.clipboard",
+                    "when": "mermaidPreviewActive"
+                },
+                {
+                    "command": "mermaid-editor.generate.file",
+                    "when": "mermaidPreviewEnabled && (resourceExtname == .mmd || resourceExtname ==.mermaid)"
+                },
+                {
+                    "command": "mermaid-editor.preview",
+                    "when": "resourceExtname == .mmd || resourceExtname ==.mermaid"
+                },
+                {
+                    "command": "mermaid-editor.preview.zoomin",
+                    "when": "mermaidPreviewVisible"
+                },
+                {
+                    "command": "mermaid-editor.preview.zoomout",
+                    "when": "mermaidPreviewVisible"
+                },
+                {
+                    "command": "mermaid-editor.preview.zoomreset",
+                    "when": "mermaidPreviewVisible"
+                },
+                {
+                    "command": "mermaid-editor.preview.zoomto",
+                    "when": "mermaidPreviewVisible"
+                }
+            ]
         }
-      ],
-      "editor/title": [
-        {
-          "when": "mermaidPreviewEnabled && (resourceExtname == .mmd || resourceExtname ==.mermaid)",
-          "command": "mermaid-editor.generate.file",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceExtname == .mmd || resourceExtname ==.mermaid",
-          "command": "mermaid-editor.preview",
-          "group": "navigation"
-        },
-        {
-          "when": "mermaidPreviewActive",
-          "command": "mermaid-editor.preview.zoomin",
-          "group": "navigation"
-        },
-        {
-          "when": "mermaidPreviewActive",
-          "command": "mermaid-editor.preview.zoomout",
-          "group": "navigation"
-        },
-        {
-          "when": "mermaidPreviewActive",
-          "command": "mermaid-editor.generate.clipboard",
-          "group": "navigation"
-        }
-      ],
-      "commandPalette": [
-        {
-          "command": "mermaid-editor.generate.clipboard",
-          "when": "mermaidPreviewActive"
-        },
-        {
-          "command": "mermaid-editor.generate.file",
-          "when": "mermaidPreviewEnabled && (resourceExtname == .mmd || resourceExtname ==.mermaid)"
-        },
-        {
-          "command": "mermaid-editor.preview",
-          "when": "resourceExtname == .mmd || resourceExtname ==.mermaid"
-        },
-        {
-          "command": "mermaid-editor.preview.zoomin",
-          "when": "mermaidPreviewVisible"
-        },
-        {
-          "command": "mermaid-editor.preview.zoomout",
-          "when": "mermaidPreviewVisible"
-        },
-        {
-          "command": "mermaid-editor.preview.zoomreset",
-          "when": "mermaidPreviewVisible"
-        },
-        {
-          "command": "mermaid-editor.preview.zoomto",
-          "when": "mermaidPreviewVisible"
-        }
-      ]
+    },
+    "scripts": {
+        "vscode:prepublish": "webpack --mode production",
+        "webpack": "webpack --mode development",
+        "webpack-dev": "webpack --mode development --watch",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "test": "node ./out/test/runTest",
+        "pretest": "pnpm run compile && pnpm run lint",
+        "lint": "eslint src --ext ts",
+        "prepare": "is-ci || husky install",
+        "vsce": "vsce"
+    },
+    "prettier": {
+        "singleQuote": true
+    },
+    "devDependencies": {
+        "@types/glob": "7.1.4",
+        "@types/lodash": "4.17.16",
+        "@types/mkdirp": "1.0.2",
+        "@types/mocha": "10.0.10",
+        "@types/node": "22.14.1",
+        "@types/vscode": "^1.99.1",
+        "@types/vscode-webview": "^1.57.5",
+        "@typescript-eslint/eslint-plugin": "8.30.1",
+        "@typescript-eslint/parser": "8.30.1",
+        "@vscode/vsce": "^3.3.2",
+        "copy-webpack-plugin": "^13.0.0",
+        "eslint": "9.24.0",
+        "eslint-config-prettier": "^10.1.2",
+        "eslint-plugin-prettier": "^5.2.6",
+        "glob": "^7.2.3",
+        "husky": "^9.1.7",
+        "is-ci": "^4.1.0",
+        "lint-staged": "^15.5.1",
+        "mocha": "^11.1.0",
+        "prettier": "3.5.3",
+        "ts-loader": "^9.5.2",
+        "ts-mockito": "^2.6.1",
+        "typescript": "5.8.3",
+        "vscode-test": "1.6.1",
+        "webpack": "^5.99.5",
+        "webpack-cli": "^6.0.1"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "6.7.2",
+        "cross-fetch": "^4.1.0",
+        "lodash": "^4.17.21",
+        "mermaid": "^11.6.0",
+        "redux": "^5.0.1"
+    },
+    "resolutions": {
+        "nanoid": "3.1.31"
     }
-  },
-  "scripts": {
-    "vscode:prepublish": "webpack --mode production",
-    "webpack": "webpack --mode development",
-    "webpack-dev": "webpack --mode development --watch",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "test": "node ./out/test/runTest",
-    "pretest": "yarn run compile && yarn run lint",
-    "lint": "eslint src --ext ts",
-    "prepare": "is-ci || husky install",
-    "vsce": "vsce"
-  },
-  "prettier": {
-    "singleQuote": true
-  },
-  "devDependencies": {
-    "@types/glob": "7.1.x",
-    "@types/lodash": "4.14.x",
-    "@types/mkdirp": "1.0.x",
-    "@types/mocha": "8.2.x",
-    "@types/node": "10.17.x",
-    "@types/vscode": "1.75.x",
-    "@types/vscode-webview": "^1.57.1",
-    "@typescript-eslint/eslint-plugin": "6.4.x",
-    "@typescript-eslint/parser": "6.4.x",
-    "@vscode/vsce": "^2.21.0",
-    "copy-webpack-plugin": "^9.0.1",
-    "eslint": "8.x.x",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "glob": "7.1.x",
-    "husky": "^8.0.0",
-    "is-ci": "^3.0.1",
-    "lint-staged": "^13.1.2",
-    "mocha": "^9.1.4",
-    "prettier": "1.19.x",
-    "ts-loader": "^9.3.1",
-    "ts-mockito": "^2.6.1",
-    "typescript": "5.1.x",
-    "vscode-test": "1.3.x",
-    "webpack": "^5.76.0",
-    "webpack-cli": "^4.0.0"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "5.15.4",
-    "cross-fetch": "^4.0.0",
-    "lodash": ">=4.17.21",
-    "mermaid": "^10.3.0",
-    "redux": "^4.0.5"
-  },
-  "resolutions": {
-    "nanoid": "3.1.31"
-  }
 }
