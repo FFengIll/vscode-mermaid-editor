@@ -2,11 +2,11 @@
     "name": "vscode-mermaid-editor",
     "displayName": "Mermaid Editor",
     "description": "Live editor for mermaid.js in Visual Studio Code",
-    "version": "0.19.1",
-    "publisher": "tomoyukim",
+    "version": "0.25.4",
+    "publisher": "FFengIll",
     "license": "MIT",
     "engines": {
-        "vscode": "^1.75.0"
+        "vscode": "^1.90.0"
     },
     "categories": [
         "Other"
